@@ -10,43 +10,34 @@
 
     <Grid>
         <StackPanel Grid.Row="0">
-            <TextBlock Margin="20 0 0 0" FontSize="40" HorizontalAlignment="Left">Добавить ингридиент</TextBlock>
-            <Line X1="750" Y1="10" X2="30" Y2="10" Stroke="Orange" StrokeThickness="15" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0" Grid.RowSpan="2">
-                <Line.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Line.RenderTransform>
-            </Line>
-            <StackPanel>
-                <StackPanel Margin="0 50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250" Width="626">
-                    <StackPanel >
-                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock>Наименование:</TextBlock>
-                            <TextBox x:Name="NameTb" TextWrapping="Wrap" Height="33" Text="{Binding Name}" Width="120"/>
-                        </StackPanel >
-                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock>Цена(руб):</TextBlock>
-                            <TextBox x:Name="CostTb" Text="{Binding Cost}" Width="120"/>
-                        </StackPanel>
+            <TextBlock FontSize="40" HorizontalAlignment="Left" Text="Добавить ингредиент"/>
+            <Rectangle Fill="#FFF9B34B"
+                       Height="15"/>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0 50">
+                <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>Наименование:</TextBlock>
+                    <TextBox x:Name="NameTb" TextWrapping="Wrap" Height="33" Text="{Binding Name}" Width="120"/>
+                </StackPanel >
+                <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>Цена(руб):</TextBlock>
+                    <TextBox x:Name="CostTb" Text="{Binding Cost}" Width="120"/>
+                </StackPanel>
 
-                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock>За количество</TextBlock>
-                            <TextBox Margin="1" x:Name="CostForCountTb" Text="{Binding CostForCount}" Width="60"/>
-                            <ComboBox x:Name="CBQuant" SelectedItem="{Binding Unit}" DisplayMemberPath="Name" Width="60"></ComboBox>
-                        </StackPanel>
-                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock>В Холодильнике</TextBlock>
-                            <TextBox Margin="1" x:Name="AvailableCountTb" Text="{Binding AvailableCount}" Width="130"/>
-                        </StackPanel>
-                        <StackPanel Margin="0 15 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button  x:Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Width="90" Height="25"/>
-                            <Button x:Name="BackBTN" Content="Отменить" Click="BackBTN_Click" Width="90" Height="25"/>
-                        </StackPanel>
-                    </StackPanel>
+                <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>За количество</TextBlock>
+                    <TextBox Margin="1" x:Name="CostForCountTb" Text="{Binding CostForCount}" Width="60"/>
+                    <ComboBox x:Name="CBQuant" SelectedItem="{Binding Unit}" DisplayMemberPath="Name" Width="60"></ComboBox>
+                </StackPanel>
+                <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>В Холодильнике</TextBlock>
+                    <TextBox Margin="1" x:Name="AvailableCountTb" Text="{Binding AvailableCount}" Width="130"/>
+                </StackPanel>
+                <StackPanel Margin="0 15 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button  x:Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Width="90" Height="25"/>
+                    <Button x:Name="BackBTN" Content="Отменить" Click="BackBTN_Click" Width="90" Height="25"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
