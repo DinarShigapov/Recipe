@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyEat", "MyEat\MyEat.csproj", "{E6350B46-C230-45FB-8604-76B293B8914D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6350B46-C230-45FB-8604-76B293B8914D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6350B46-C230-45FB-8604-76B293B8914D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6350B46-C230-45FB-8604-76B293B8914D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6350B46-C230-45FB-8604-76B293B8914D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {115918E7-A9C3-44B5-AA23-3DF220F4DC11}
+	EndGlobalSection
+EndGlobal
