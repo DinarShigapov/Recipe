@@ -26,9 +26,10 @@
                                DockPanel.Dock="Left"
                                HorizontalAlignment="Left"/>
                     <TextBlock FontSize="20"
+                               x:Name="TBStocks"
                            DockPanel.Dock="Right"
                            HorizontalAlignment="Right"
-                           Text="Запасов в холодильнике на сумму (руб.):"/>
+                           Text="Запасов в холодильнике на сумму (руб.): NaN"/>
                 </DockPanel>
             </StackPanel>
 
@@ -42,6 +43,7 @@
                       ColumnHeaderHeight="40" AutoGenerateColumns="False"  
                       ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="False"
                       CanUserAddRows ="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header= "Наименование- ингредиента" IsReadOnly="True" Binding="{Binding Name}"/>
@@ -49,6 +51,7 @@
                         <DataGridTextColumn.CellStyle>
                             <Style TargetType="DataGridCell">
                                 <Setter Property="Background" Value="{Binding PriceColor}"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </Style>
                         </DataGridTextColumn.CellStyle>
                         <DataGridTextColumn.Binding>

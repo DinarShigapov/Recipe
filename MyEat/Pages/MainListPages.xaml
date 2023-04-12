@@ -26,7 +26,7 @@
                                Text="Категория:"
                                VerticalAlignment="Center"/>
                         <ComboBox Width="150" 
-                              Margin="10 0 0 0" 
+                              Margin="10 0 0 0"
                               SelectionChanged="ComboBox_SelectionChanged" 
                               x:Name="CategoriCb"
                               DisplayMemberPath="Name" Height="27"
@@ -47,9 +47,12 @@
                     </StackPanel>
                 </StackPanel>
                 <CheckBox Content="Показывать только блюда, на которых хватает ингредиентов"
+                          x:Name="CBShow"
                           FontSize="15"
                           VerticalAlignment="Center"
-                          VerticalContentAlignment="Center"/>
+                          VerticalContentAlignment="Center"
+                          Checked="CheckBox_Checked"
+                          Unchecked="CheckBox_Unchecked"/>
             </StackPanel>
            
         </StackPanel>

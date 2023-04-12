@@ -88,6 +88,7 @@
       <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\PartialClass\Dish.cs" />
+    <Compile Include="Components\PartialClass\Ingredient.cs" />
     <Compile Include="Components\RecipeDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

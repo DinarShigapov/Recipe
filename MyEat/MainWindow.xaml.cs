@@ -39,7 +39,7 @@ namespace MyEat
 
         private void ExitBt_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

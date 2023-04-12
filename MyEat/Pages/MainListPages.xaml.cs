@@ -1,6 +1,7 @@
 ﻿using MyEat.Components;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace MyEat.Pages
                 Name = "Все"
             });
             CategoriCb.ItemsSource = prod;
+            CategoriCb.SelectedIndex = 0;
             LVprod.ItemsSource = App.DB.Dish.ToList() ;
             Refresh();
         }
@@ -60,12 +62,46 @@ namespace MyEat.Pages
             {
                 filterProduct = filterProduct.Where(x => x.Name.ToLower().StartsWith(NameCB.Text.ToLower())).ToList();
             }
-            LVprod.ItemsSource = filterProduct.ToList(); 
+            LVprod.ItemsSource = filterProduct.ToList();
+            CBShow.IsChecked = false;
 
         }
 
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var dish = App.DB.Dish.ToList();
+            List<Dish> list = new List<Dish>();
 
-    
+
+            foreach (var item in dish)
+            {
+                bool isCheck = true;
+                var cookingStage = App.DB.CookingStage.Where(x => x.DishId == item.Id);
+
+                foreach (var item2 in cookingStage)
+                {
+                    var ios = App.DB.IngredientOfStage.Where(x => x.CookingStageId == item2.Id).ToList();
+
+                    foreach (var item3 in ios)
+                    {
+                        if (App.DB.Ingredient.FirstOrDefault(x => x.Id == item3.IngredientId).AvailableCount < item3.Quantity)
+                        {
+                            isCheck = false; break;
+                        };
+                    }
+
+                }
+                if (isCheck) { list.Add(item); }
+
+            }
+
+            LVprod.ItemsSource = list;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
     }
 
 

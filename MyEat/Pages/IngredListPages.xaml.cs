@@ -63,9 +63,16 @@ namespace MyEat.Pages
 
             CsvGrid.ItemsSource = ingredients[currentPage - 1];
 
+            double stocks = 0;
 
-            TBQuantity.Text = $"{ingredientBuffer.ToList().Count().ToString()} наименований";
-            TBQuantity.Text = $"{ingredientBuffer.ToList().Count().ToString()} наименований";
+            foreach (var item in ingredientBuffer)
+            {
+                stocks += (double)item.Cost * item.AvailableCount;
+            }
+            
+
+            TBQuantity.Text = $"{ingredientBuffer.ToList().Count()} наименований";
+            TBStocks.Text = $"Запасов в холодильнике на сумму (руб.): {stocks} руб.";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
