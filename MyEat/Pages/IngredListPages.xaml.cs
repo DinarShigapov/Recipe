@@ -13,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Data;
+using System.Collections;
+using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace MyEat.Pages
 {
@@ -21,146 +25,81 @@ namespace MyEat.Pages
     /// </summary>
     public partial class IngredListPages : Page
     {
-        int sours = 5;
-        int List = 1;
+        int MaxPage = 0;
+        int currentPage = 1;
+
+        List<List<Ingredient>> ingredients = new List<List<Ingredient>>();
+
         public IngredListPages()
         {
             InitializeComponent();
-            ListTb.Text = "1/4";
-            var ingredientBuffer = App.DB.Ingredient;
-            CsvGrid.ItemsSource = ingredientBuffer.Where(x => x.Id <= sours).ToList();
+            
+            var ingredientBuffer = App.DB.Ingredient.ToList();
+            //CsvGrid.ItemsSource = ingredientBuffer.Where(x => x.Id <= sours).ToList();
+            int ingredientCount = 0;
+            do
+            {
+                ingredientCount += 7;
+                MaxPage++;
+            } while (ingredientCount < ingredientBuffer.Count());
+            ListTb.Text = $"{currentPage}/{MaxPage}";
+
+            int start = 1;
+            for (int i = 1; i <= MaxPage; i++)
+            {
+                List<Ingredient> buffer = new List<Ingredient>();
+
+                for (; start <= 7 * i; start++)
+                {
+                    if (start <= ingredientBuffer.Count)
+                    {
+                        buffer.Add(ingredientBuffer[start - 1]);
+                    }
+                    
+                }
+
+                ingredients.Add(buffer);
+            }
+
+            CsvGrid.ItemsSource = ingredients[currentPage - 1];
+
+
             TBQuantity.Text = $"{ingredientBuffer.ToList().Count().ToString()} наименований";
             TBQuantity.Text = $"{ingredientBuffer.ToList().Count().ToString()} наименований";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (List > 1)
+            if (sender == BNext)
             {
-                List -= 1;
+                if (currentPage == MaxPage)
+                    currentPage = 1;
+                else currentPage++;
             }
-        
-            if (List == 1)
+            else if (sender == BBack)
             {
-                ListTb.Text = "1/4";
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 5).ToList();
+                if (currentPage == 1)
+                    currentPage = MaxPage;
+                else currentPage--;
+            }
+            else if (sender == BFullNext)
+            {
+                if (currentPage == MaxPage)
+                    currentPage = 1;
+                else currentPage = MaxPage;
+            }
+            else
+            {
+                if (currentPage == 1)
+                    currentPage = MaxPage;
+                else currentPage = 1;
+            }
 
-            }
-            else if (List == 2)
-            {
+            ListTb.Text = $"{currentPage}/{MaxPage}";
+            CsvGrid.ItemsSource = ingredients[currentPage - 1];
 
-                
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 11 && x.Id > 5).ToList();
-                ListTb.Text = "2/4";
-            }
-            else if (List == 3)
-            {
-        
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 17 && x.Id > 11).ToList();
-                ListTb.Text = "3/4";
-            }
-            else if (List == 4)
-            {
-              
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 22 && x.Id > 17).ToList();
-                ListTb.Text = "4/4";
-
-            }
-            //if(sours-5 > 0)
-            //{
-            //    sours = sours - 5;
-            //    CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= sours && x.Id > sours - 5).ToList();
-            //    List -= 1;
-            //    ListTb.Text = List.ToString();
-            //}
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (List < 4)
-            {
-                List += 1;
-            }
-            if (List == 1)
-            {
-                
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 5).ToList();
-                ListTb.Text = "1/4";
-            }
-            
-           else if (List == 2)
-            {
-                
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 11 && x.Id > 5).ToList();
-                ListTb.Text = "2/4";
-            }
-            else if(List == 3)
-            {
-                
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 17 && x.Id > 11).ToList();
-                ListTb.Text = "3/4";
-            }
-            else if (List == 4)
-            {
-    
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 22 && x.Id > 17).ToList();
-                ListTb.Text = "4/4";
-            }
-            //if (sours +5 < 26)
-            //{
-            //    sours = sours + 5;
-            //    CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= sours && x.Id > sours-5).ToList();
-
-            //    List += 1;
-            //    ListTb.Text = List.ToString();
-            //}
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-         
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 5).ToList();
-            ListTb.Text = "1/4";
-            List = 1;
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {   
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 11 && x.Id > 5).ToList();
-            ListTb.Text = "2/4";
-            List = 2;
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 17 && x.Id > 11).ToList();
-            ListTb.Text = "3/4";
-            List = 3;
-        }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-
-                CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 22 && x.Id > 17).ToList();
-            ListTb.Text = "4/4";
-            List = 4;
-        }
-
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-           
-            CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 22 && x.Id > 17).ToList();
-            ListTb.Text = "4/4";
-            List = 4;
-        }
-
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
-            CsvGrid.ItemsSource = App.DB.Ingredient.Where(x => x.Id <= 5).ToList();
-            ListTb.Text = "1/4";
-            List = 1;
-        }
 
         private void LinkEdIt_Click(object sender, RoutedEventArgs e)
         {
@@ -172,7 +111,14 @@ namespace MyEat.Pages
         {
 
         }
+
+
+       
     }
-    }
+
+}
+
+
+
 
 

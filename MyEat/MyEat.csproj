@@ -73,38 +73,38 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Category.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\CookingStage.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Dish.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Ingredient.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\IngredientOfStage.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\PartialClass\Dish.cs" />
-    <Compile Include="Components\RecipeDB.Context.cs">
+    <Compile Include="Components\RecipeDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeDB.Context.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\RecipeDB.cs">
+    <Compile Include="Components\RecipeDataBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\RecipeDB.Designer.cs">
+    <Compile Include="Components\RecipeDataBase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RecipeDB.edmx</DependentUpon>
+      <DependentUpon>RecipeDataBase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Components\Unit.cs">
-      <DependentUpon>RecipeDB.tt</DependentUpon>
+      <DependentUpon>RecipeDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -150,12 +150,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Components\RecipeDB.edmx">
+    <EntityDeploy Include="Components\RecipeDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RecipeDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>RecipeDataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Components\RecipeDB.edmx.diagram">
-      <DependentUpon>RecipeDB.edmx</DependentUpon>
+    <None Include="Components\RecipeDataBase.edmx.diagram">
+      <DependentUpon>RecipeDataBase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -167,22 +167,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Components\RecipeDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecipeDB.edmx</DependentUpon>
-      <LastGenOutput>RecipeDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Components\RecipeDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RecipeDB.edmx</DependentUpon>
-      <LastGenOutput>RecipeDB.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resourses\Icon.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\RecipeDataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDataBase.edmx</DependentUpon>
+      <LastGenOutput>RecipeDataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Components\RecipeDataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDataBase.edmx</DependentUpon>
+      <LastGenOutput>RecipeDataBase.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

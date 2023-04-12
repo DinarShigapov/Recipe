@@ -286,7 +286,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RecipeDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RecipeDataBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="CookingStage" EntityType="Self.CookingStage" />
           <EntitySet Name="Dish" EntityType="Self.Dish" />
@@ -319,7 +319,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище RecipeDBModelContainer" CdmEntityContainer="RecipeDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RecipeDBModelContainer" CdmEntityContainer="RecipeDataBaseEntities">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="RecipeDBModel.Category">
               <MappingFragment StoreEntitySet="Category">

@@ -9,17 +9,17 @@
         <SolidColorBrush x:Key="MainPink" Color="#fed7c1"></SolidColorBrush>
         <SolidColorBrush x:Key="MainPurple" Color="#eed4fe"></SolidColorBrush>
 
-        <!--<Style TargetType="Concrol" x:Key="BaseControl">
+        <Style TargetType="Control" x:Key="BaseControl">
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-        </Style>-->
-        <!--<Style TargetType="Button" x:Key="BaseOliveButton">
+        </Style>
+        <Style TargetType="Button" x:Key="BaseOliveButton">
             <Setter Property="Background" Value="{StaticResource MainOlive}"></Setter>
             <Setter Property="Height" Value="28"></Setter>
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource BaseOliveButton}">
             <Setter Property="Margin" Value="10"></Setter>
         </Style>
-        <Style TargetType="ComboBox" BasedOn="{StaticResource BaseControl}"></Style>-->
+        <Style TargetType="ComboBox" BasedOn="{StaticResource BaseControl}"></Style>
     </Application.Resources>
 </Application>

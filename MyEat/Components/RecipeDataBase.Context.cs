@@ -13,10 +13,10 @@ namespace MyEat.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RecipeDBEntities : DbContext
+    public partial class RecipeDataBaseEntities : DbContext
     {
-        public RecipeDBEntities()
-            : base("name=RecipeDBEntities")
+        public RecipeDataBaseEntities()
+            : base("name=RecipeDataBaseEntities")
         {
         }
     

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyEat.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="IngredListPages">
 
     <Grid>
@@ -17,7 +17,8 @@
             <TextBlock FontSize="40">Список ингредиентов</TextBlock>
             <Rectangle Fill="#FFF9B34B"
                        Height="15"/>
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center"
+                        Margin="0 20">
                 <DockPanel>
                     <TextBlock FontSize="20" 
                                Text="Кол-во"
@@ -37,30 +38,13 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="CsvGrid" ColumnWidth="*"  ColumnHeaderHeight="50" AutoGenerateColumns="False"  
-                      ItemsSource="{Binding Ingredient}">
+            <DataGrid x:Name="CsvGrid" ColumnWidth="*"  
+                      ColumnHeaderHeight="40" AutoGenerateColumns="False"  
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      CanUserAddRows ="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header= "наименование- ингредиента" IsReadOnly="True" Binding="{Binding Name}"/>
-                    <!--<DataGridTemplateColumn Header="Теги">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl ItemsSource="{Binding Tags}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel></WrapPanel>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border CornerRadius="7" Background="{Binding Backcolor}" Margin="2,1">
-                                                <TextBlock Foreground="{Binding FontColor}" Text="{Binding Name, StringFormat={}#{0}}" Margin="2"></TextBlock>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header= "Наименование- ингредиента" IsReadOnly="True" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Цена" IsReadOnly="True">
                         <DataGridTextColumn.CellStyle>
                             <Style TargetType="DataGridCell">
@@ -78,8 +62,8 @@
                     <DataGridTextColumn Header="В наличии" IsReadOnly="True">
                         <DataGridTextColumn.Binding>
                             <MultiBinding StringFormat="{}{1} {0}">
-                                <Binding Path="Unit.Name"></Binding >
-                                <Binding Path="AvailableCount"></Binding>
+                                <Binding Path="Unit.Name"/>
+                                <Binding Path="AvailableCount"/>
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
@@ -102,11 +86,14 @@
             <StackPanel Orientation="Horizontal" 
                         Margin="10 0 0 0" Grid.Row="2"
                         VerticalAlignment="Center">
-                <Button Content=" &#60;&#60;" Width="50" Click="Button_Click_7"></Button>
-                <Button Content=" &#60;" Width="50" Click="Button_Click"></Button>
-                <TextBlock x:Name="ListTb" Width="50" TextAlignment="Center"></TextBlock>
-                <Button Content=" &#62;" Width="50" Click="Button_Click_1"></Button>
-                <Button Content=" &#62;&#62;" Width="50" Click="Button_Click_6"></Button>
+                <Button Content=" &#60;&#60;" x:Name="BFullBack" Click="Button_Click" Width="50"></Button>
+                <Button Content=" &#60;" x:Name="BBack" Click="Button_Click" Width="50"></Button>
+                <TextBlock x:Name="ListTb" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="20"/>
+                <Button Content=" &#62;" x:Name="BNext" Width="50" Click="Button_Click"></Button>
+                <Button Content=" &#62;&#62;" x:Name="BFullNext" Click="Button_Click" Width="50"></Button>
             </StackPanel>
         </Grid>
     </Grid>

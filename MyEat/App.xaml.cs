@@ -14,6 +14,6 @@ namespace MyEat
     /// </summary>
     public partial class App : Application
     {
-        public static RecipeDBEntities DB = new RecipeDBEntities();
+        public static RecipeDataBaseEntities DB = new RecipeDataBaseEntities();
     }
 }
