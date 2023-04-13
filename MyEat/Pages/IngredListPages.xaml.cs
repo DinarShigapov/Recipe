@@ -33,8 +33,9 @@ namespace MyEat.Pages
         public IngredListPages()
         {
             InitializeComponent();
+            
             Refresh();
-
+            GenButton();
 
         }
 
@@ -88,6 +89,7 @@ namespace MyEat.Pages
  
         private void GenButton() 
         {
+            SPButton.Children.Clear();
             for (int i = 1; i <= MaxPage; i++)
             {
                 Button myBtn = new Button();
@@ -136,7 +138,7 @@ namespace MyEat.Pages
 
             ListTb.Text = $"{currentPage}/{MaxPage}";
             CsvGrid.ItemsSource = ingredients[currentPage - 1];
-
+            GenButton();
         }
 
 

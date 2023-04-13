@@ -24,6 +24,7 @@ namespace MyEat.Pages
         int Quan = 1;
 
         Dish contextDish;
+        int result;
 
         public ReceptPage(Dish dish)
         {
@@ -52,8 +53,9 @@ namespace MyEat.Pages
             }
             CsvGrid.ItemsSource = ingredientList;
 
+            result = (int)cooking.Sum(x => x.TimeInMinutes);
 
-            TBCookingTime.Text = $"Время на приготовление: {(int)cooking.Sum(x => x.TimeInMinutes)} мин.";
+            TBCookingTime.Text = $"Время на приготовление: {result} мин.";
            
             TBGeneralSum.Text = $"Запасов в холодильнике на сумму (руб.): {dish.ServingPrice * int.Parse(TBQuantity.Text)} руб.";
 
@@ -81,8 +83,16 @@ namespace MyEat.Pages
                 }
 
             }
+            TBCookingTime.Text = $"Время на приготовление: {result * Quan} мин.";
             TBGeneralSum.Text = $"Запасов в холодильнике на сумму (руб.): {contextDish.ServingPrice * int.Parse(TBQuantity.Text)} руб.";
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Ваш заказ {contextDish.Name} готовиться.\nПримерная готовка {result * Quan} минут");
+            NavigationService.Navigate(new MainListPages());
+            
         }
     }
 }
