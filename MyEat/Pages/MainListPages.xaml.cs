@@ -102,6 +102,14 @@ namespace MyEat.Pages
         {
             Refresh();
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var ingr = (sender as Border).DataContext as Dish;
+
+            NavigationService.Navigate(new ReceptPage(ingr));
+
+        }
     }
 
 

@@ -67,7 +67,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Black" Width="250" Height="250">
+                        <Border BorderThickness="1" BorderBrush="Black" Width="250" Height="250" MouseDown="Border_MouseDown">
                             <Grid Margin="10">
                                 <Grid.Background>
                                     <ImageBrush ImageSource="{Binding Photo}"></ImageBrush>

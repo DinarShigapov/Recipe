@@ -9,6 +9,8 @@ namespace MyEat.Components
 {
     public partial class Ingredient
     {
+        public double Price => (double)Cost / CostForCount;
+
         public SolidColorBrush PriceColor
         {
             get

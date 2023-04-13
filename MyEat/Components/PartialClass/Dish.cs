@@ -13,7 +13,7 @@ namespace MyEat.Components
             get
             {
                 var allIngredints = CookingStage.SelectMany(x => x.IngredientOfStage).ToList();
-                double totalSum = allIngredints.Sum(x => x.Quantity * (double)x.Ingredient.Cost);
+                double totalSum = allIngredints.Sum(x => x.Quantity * (double)x.Ingredient.Price);
                 double price = totalSum / ServingQuantity;
                 price = price - price % 0.1;
                 return price;

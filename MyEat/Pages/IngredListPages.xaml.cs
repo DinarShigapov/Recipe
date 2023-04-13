@@ -74,12 +74,13 @@ namespace MyEat.Pages
 
             foreach (var item in ingredientBuffer)
             {
-                stocks += (double)item.Cost * item.AvailableCount;
+                stocks += (double)item.Cost * item.CostForCount;
             }
 
 
             TBQuantity.Text = $"{ingredientBuffer.ToList().Count()} наименований";
-            TBStocks.Text = $"Запасов в холодильнике на сумму (руб.): {stocks} руб.";
+            double sum = ingredientBuffer.Sum(x => x.Price * x.AvailableCount);
+            TBStocks.Text = $"Запасов в холодильнике на сумму (руб.): {sum:N2} руб.";
             ListTb.Text = $"{currentPage}/{MaxPage}";
             GenButton();
         }
