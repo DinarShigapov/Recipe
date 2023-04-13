@@ -88,9 +88,23 @@ namespace MyEat.Pages
                 e.Handled = true;
             if (e.Text == "." && textBox.Text.Contains('.'))
                 e.Handled = true;
+            if (textBox.Text == "" && e.Text == "." && (textBox.Text.Last() != '.' || textBox.Text[textBox.Text.Length - 1] != '.'))
+                e.Handled = true;
+            if (textBox.Text.Length >= 4)
+            {
+                if (textBox.Text[textBox.Text.Length - 3] == '.')
+                    e.Handled = true;
+            }
 
 
             textBox.CaretIndex = textBox.Text.Length;
+        }
+
+        private void CostForCountTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
+                e.Handled = true;
         }
     }
 }

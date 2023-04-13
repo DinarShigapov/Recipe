@@ -22,7 +22,7 @@ namespace MyEat.Components
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Cost { get; set; }
+        public float Cost { get; set; }
         public double CostForCount { get; set; }
         public int UnitId { get; set; }
         public double AvailableCount { get; set; }
