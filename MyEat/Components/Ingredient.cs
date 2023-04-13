@@ -26,6 +26,7 @@ namespace MyEat.Components
         public double CostForCount { get; set; }
         public int UnitId { get; set; }
         public double AvailableCount { get; set; }
+        public bool IsDelete { get; set; }
     
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

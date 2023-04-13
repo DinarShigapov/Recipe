@@ -86,18 +86,46 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" 
-                        Margin="10 0 0 0" Grid.Row="2"
-                        VerticalAlignment="Center">
-                <Button Content=" &#60;&#60;" x:Name="BFullBack" Click="Button_Click" Width="50"></Button>
-                <Button Content=" &#60;" x:Name="BBack" Click="Button_Click" Width="50"></Button>
-                <TextBlock x:Name="ListTb" 
+            <DockPanel Grid.Row="2">
+                <StackPanel Orientation="Horizontal"  
+                        VerticalAlignment="Center"
+                            DockPanel.Dock="Left"
+                            HorizontalAlignment="Left">
+                    <Button Content=" &#60;&#60;" x:Name="BFullBack" Click="Button_Click" Width="50"></Button>
+                    <Button Content=" &#60;" x:Name="BBack" Click="Button_Click" Width="50"></Button>
+                    <TextBlock x:Name="ListTb" 
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="20"/>
-                <Button Content=" &#62;" x:Name="BNext" Width="50" Click="Button_Click"></Button>
-                <Button Content=" &#62;&#62;" x:Name="BFullNext" Click="Button_Click" Width="50"></Button>
-            </StackPanel>
+                    <Button Content=" &#62;" x:Name="BNext" Width="50" Click="Button_Click"></Button>
+                    <Button Content=" &#62;&#62;" x:Name="BFullNext" Click="Button_Click" Width="50"></Button>
+
+
+                </StackPanel>
+                <StackPanel x:Name="SPButton"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+
+                </StackPanel>
+                <Button Content="+" x:Name="BAdd" Background="#FFE007A5"  Width="45" Height="44" FontSize="20" HorizontalAlignment="Right" Click="BAdd_Click" Grid.Row="1">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </DockPanel>
         </Grid>
     </Grid>
 </Page>

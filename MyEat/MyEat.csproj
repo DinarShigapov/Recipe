@@ -73,19 +73,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\Category.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\CookingStage.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Dish.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Ingredient.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\IngredientOfStage.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\PartialClass\Dish.cs" />
     <Compile Include="Components\PartialClass\Ingredient.cs" />
@@ -104,8 +104,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Components\RecipeDBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RecipeDBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\RecipeDBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeDBase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Components\Unit.cs">
-      <DependentUpon>RecipeDataBase.tt</DependentUpon>
+      <DependentUpon>RecipeDBase.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -158,6 +173,13 @@
     <None Include="Components\RecipeDataBase.edmx.diagram">
       <DependentUpon>RecipeDataBase.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Components\RecipeDBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecipeDBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Components\RecipeDBase.edmx.diagram">
+      <DependentUpon>RecipeDBase.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -183,6 +205,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RecipeDataBase.edmx</DependentUpon>
       <LastGenOutput>RecipeDataBase.cs</LastGenOutput>
+    </Content>
+    <Content Include="Components\RecipeDBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDBase.edmx</DependentUpon>
+      <LastGenOutput>RecipeDBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Components\RecipeDBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecipeDBase.edmx</DependentUpon>
+      <LastGenOutput>RecipeDBase.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

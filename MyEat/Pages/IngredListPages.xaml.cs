@@ -33,9 +33,16 @@ namespace MyEat.Pages
         public IngredListPages()
         {
             InitializeComponent();
-            
-            var ingredientBuffer = App.DB.Ingredient.ToList();
-            //CsvGrid.ItemsSource = ingredientBuffer.Where(x => x.Id <= sours).ToList();
+            Refresh();
+
+
+        }
+
+        private void Refresh()
+        {
+            ingredients = new List<List<Ingredient>>();
+            MaxPage = 0;
+            var ingredientBuffer = App.DB.Ingredient.Where(x => x.IsDelete == false).ToList();
             int ingredientCount = 0;
             do
             {
@@ -55,7 +62,7 @@ namespace MyEat.Pages
                     {
                         buffer.Add(ingredientBuffer[start - 1]);
                     }
-                    
+
                 }
 
                 ingredients.Add(buffer);
@@ -69,10 +76,34 @@ namespace MyEat.Pages
             {
                 stocks += (double)item.Cost * item.AvailableCount;
             }
-            
+
 
             TBQuantity.Text = $"{ingredientBuffer.ToList().Count()} наименований";
             TBStocks.Text = $"Запасов в холодильнике на сумму (руб.): {stocks} руб.";
+            ListTb.Text = $"{currentPage}/{MaxPage}";
+            GenButton();
+        }
+
+ 
+        private void GenButton() 
+        {
+            for (int i = 1; i <= MaxPage; i++)
+            {
+                Button myBtn = new Button();
+                myBtn.Content = i;
+                myBtn.Margin = new Thickness(5, 0, 0, 0);
+                myBtn.Width = 30;
+                myBtn.Click += MyBtn_Click;
+                SPButton.Children.Add(myBtn);
+            }
+        }
+
+        private void MyBtn_Click(Object sender, EventArgs e)
+        {
+            var ds = sender as Button;
+
+            ListTb.Text = $"{ds.Content.ToString()}/{MaxPage}";
+            CsvGrid.ItemsSource = ingredients[int.Parse(ds.Content.ToString()) - 1];
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -111,16 +142,34 @@ namespace MyEat.Pages
         private void LinkEdIt_Click(object sender, RoutedEventArgs e)
         {
             var select = (sender as Hyperlink).DataContext as Ingredient;
+            if (select == null)
+            {
+                MessageBox.Show("Выберите ингредиент");
+                return;
+            }
+
             NavigationService.Navigate(new AddEditPage(select));
         }
 
         private void LinkDelete_Click(object sender, RoutedEventArgs e)
         {
+            var select = (sender as Hyperlink).DataContext as Ingredient;
+            if (select == null)
+            {
+                MessageBox.Show("Выберите ингредиент");
+                return;
+            }
+            select.IsDelete = true;
+            App.DB.SaveChanges();
+            Refresh();
 
         }
 
+        private void BAdd_Click(object sender, RoutedEventArgs e)
+        {
 
-       
+            NavigationService.Navigate(new AddEditPage(new Ingredient()));
+        }
     }
 
 }

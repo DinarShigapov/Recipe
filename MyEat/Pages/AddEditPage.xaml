@@ -18,22 +18,22 @@
                         VerticalAlignment="Center"
                         Margin="0 50">
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock>Наименование:</TextBlock>
-                    <TextBox x:Name="NameTb" TextWrapping="Wrap" Height="33" Text="{Binding Name}" Width="120"/>
+                    <TextBlock FontSize="18">Наименование:</TextBlock>
+                    <TextBox FontSize="16" x:Name="NameTb" TextWrapping="Wrap" Height="33" Text="{Binding Name}" Width="120"/>
                 </StackPanel >
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock>Цена(руб):</TextBlock>
-                    <TextBox x:Name="CostTb" Text="{Binding Cost}" Width="120"/>
+                    <TextBlock FontSize="18">Цена(руб):</TextBlock>
+                    <TextBox FontSize="16" x:Name="CostTb" Text="{Binding Cost}"  Width="120" PreviewTextInput="CostTb_PreviewTextInput"/>
                 </StackPanel>
 
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock>За количество</TextBlock>
-                    <TextBox Margin="1" x:Name="CostForCountTb" Text="{Binding CostForCount}" Width="60"/>
+                    <TextBlock FontSize="18">За количество</TextBlock>
+                    <TextBox FontSize="16" Margin="1" x:Name="CostForCountTb" Text="{Binding CostForCount}" Width="60"/>
                     <ComboBox x:Name="CBQuant" SelectedItem="{Binding Unit}" DisplayMemberPath="Name" Width="60"></ComboBox>
                 </StackPanel>
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock>В Холодильнике</TextBlock>
-                    <TextBox Margin="1" x:Name="AvailableCountTb" Text="{Binding AvailableCount}" Width="130"/>
+                    <TextBlock FontSize="18">В Холодильнике</TextBlock>
+                    <TextBox FontSize="16" Margin="1" x:Name="AvailableCountTb" Text="{Binding AvailableCount}" Width="130"/>
                 </StackPanel>
                 <StackPanel Margin="0 15 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button  x:Name="SaveBtn" Content="Сохранить" Click="SaveBtn_Click" Width="90" Height="25"/>

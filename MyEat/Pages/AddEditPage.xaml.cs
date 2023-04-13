@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,8 @@ namespace MyEat.Pages
     public partial class AddEditPage : Page
     {
         Ingredient contextingredient;
+
+
         public AddEditPage(Ingredient ingredient)
         {
             InitializeComponent();
@@ -32,28 +35,29 @@ namespace MyEat.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var erormasage = "";
+            var errormessage = "";
             if (NameTb.Text.Trim() == "")
             {
-                erormasage += "Заполните название \n";
+                errormessage += "Заполните название \n";
             }
             if (CostTb.Text.Trim() == "")
             {
-                erormasage += "Заполните цену \n";
+                errormessage += "Заполните цену \n";
             }
             if (CostForCountTb.Text.Trim() == "")
             {
-                erormasage += "Заполните цена за количество \n";
+                errormessage += "Заполните цена за количество \n";
             }
             if (CBQuant.SelectedIndex < 0)
             {
-                erormasage += "Выберете идин измерения \n";
+                errormessage += "Выберите одно измерение \n";
             }
             if (AvailableCountTb.Text.Trim() == "")
             {
-                erormasage += "Заполните количество в холодильнике \n";
+                errormessage += "Заполните количество в холодильнике \n";
             }
-            if (erormasage == "")
+
+            if (errormessage == "")
             {
                 if (contextingredient.Id == 0)
                 {
@@ -68,13 +72,25 @@ namespace MyEat.Pages
             }
             else
             {
-                MessageBox.Show(erormasage);
+                MessageBox.Show(errormessage);
             }
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new IngredListPages());
+        }
+
+        private void CostTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (Regex.IsMatch(e.Text, @"[0-9.]") == false)
+                e.Handled = true;
+            if (e.Text == "." && textBox.Text.Contains('.'))
+                e.Handled = true;
+
+
+            textBox.CaretIndex = textBox.Text.Length;
         }
     }
 }
