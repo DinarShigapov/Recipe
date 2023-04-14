@@ -94,7 +94,7 @@ namespace MyEat.Pages
                 if (isCheck) { list.Add(item); }
 
             }
-
+            CategoriCb.SelectedIndex = 0;
             LVprod.ItemsSource = list;
         }
 

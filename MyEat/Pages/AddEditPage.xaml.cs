@@ -106,5 +106,13 @@ namespace MyEat.Pages
             if (Regex.IsMatch(e.Text, @"[0-9]") == false)
                 e.Handled = true;
         }
+
+        private void CostTb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

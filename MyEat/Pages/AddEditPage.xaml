@@ -23,16 +23,16 @@
                 </StackPanel >
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock FontSize="18">Цена(руб):</TextBlock>
-                    <TextBox FontSize="16" x:Name="CostTb" Text="{Binding Cost}" MaxLength="6"  Width="120" PreviewTextInput="CostTb_PreviewTextInput"/>
+                    <TextBox FontSize="16" x:Name="CostTb" PreviewKeyDown="CostTb_PreviewKeyDown" Text="{Binding Cost}" MaxLength="6"  Width="120" PreviewTextInput="CostTb_PreviewTextInput"/>
                 </StackPanel>
 
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock FontSize="18">За количество</TextBlock>
+                    <TextBlock FontSize="18">За количество: </TextBlock>
                     <TextBox FontSize="16" Margin="1" MaxLength="4" x:Name="CostForCountTb" Text="{Binding CostForCount}" Width="60" PreviewTextInput="CostForCountTb_PreviewTextInput"/>
                     <ComboBox x:Name="CBQuant" SelectedItem="{Binding Unit}" DisplayMemberPath="Name" Width="60"></ComboBox>
                 </StackPanel>
                 <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock FontSize="18">В Холодильнике</TextBlock>
+                    <TextBlock FontSize="18">В Холодильнике:</TextBlock>
                     <TextBox FontSize="16" Margin="1" x:Name="AvailableCountTb" Text="{Binding AvailableCount}" MaxLength="4" PreviewTextInput="CostForCountTb_PreviewTextInput" Width="130"/>
                 </StackPanel>
                 <StackPanel Margin="0 15 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
